@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body,Param } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import {CreatePostDto} from './posts.dto';
 
@@ -6,13 +6,14 @@ import {CreatePostDto} from './posts.dto';
 export class PostsController {
   constructor(private readonly postsService: PostsService) {}
 
-@Get()
-  FindPosts(id: number){
-    return this.postsService.getPostById();
+@Get(':id')
+
+  FindPosts(@Param('id')id: number){
+    return this.postsService.getPostById(id);
   }
 
 @Post('/create')
- CreatePost(createPostDto: CreatePostDto){
-     return this.postsService.createPost(createPostDto,createPostDto);
+ CreatePost(@Body() createPostDto: CreatePostDto){
+     return this.postsService.createPost(createPostDto.title, createPostDto.userId);
      }
 }

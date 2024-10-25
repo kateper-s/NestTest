@@ -5,15 +5,15 @@ import {CreatePostDto} from './posts.dto';
 export class PostsService {
     constructor() {}
 
-    getPostById() {
+    getPostById(id: number) {
         return {
-            id: 1,
+            id: id,
             title: 'hello',
             userId: 'pomogite'
             }
         }
 
-    createPost(title: CreatePostDto, userId: CreatePostDto) {
-        return 'Пост с заголовком '+ title + ' был создан пользователем '+ userId;
+    createPost(title: string, userId: string) {
+        return `Пост с заголовком ${title} был создан пользователем ${userId}`;
     }
 }
