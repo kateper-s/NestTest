@@ -12,7 +12,7 @@ export class PostsController {
   }
 
 @Post('/create')
- CreatePost(CreatePostDto: CreatePostDto){
-     return this.postsService.createPost(CreatePostDto,CreatePostDto);
+ CreatePost(createPostDto: CreatePostDto){
+     return this.postsService.createPost(createPostDto,createPostDto);
      }
 }
